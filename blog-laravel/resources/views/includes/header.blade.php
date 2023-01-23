@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('blog') }}" class="nav-link {{ Route::is('blog') ? 'active' : '' }}" aria-current="page">
+                    <a href="{{ route('blog') }}" class="nav-link {{ Route::is('blog*') ? 'active' : '' }}" aria-current="page">
                         {{ __('Blog') }}
                     </a>
                 </li>

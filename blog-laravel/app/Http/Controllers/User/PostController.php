@@ -9,37 +9,73 @@ class PostController extends Controller
 {
     public function index()
     {
-        return 'posts list';
+        $post = (object) [
+            'id' => 124,
+            'title' =>' Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident assumenda nisi enim, accusantium voluptates ad.a',
+        ];
+
+        $posts = array_fill(0 , 10 ,$post);
+
+
+        return view('user.posts.index', compact('posts'));
     }
 
     public function create()
     {
-        return 'create';
+        return view('user.posts.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return 'store';
+        // $title = $request->input('title');
+        // $content = $request->input('content');
+        // dd($title , $content);
+
+        return redirect()->route('user.posts.show' , 123);
     }
 
     public function show($post)
     {
-        return "show {$post}";
+        $post = (object) [
+            'id' => 124,
+            'title' =>' Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident assumenda nisi enim, accusantium voluptates ad.a',
+        ];
+        
+
+        return view('user.posts.show', compact('post'));
     }
 
     public function edit($post)
     {
-        return "edit {$post}";
+        $post = (object) [
+            'id' => 124,
+            'title' =>' Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident assumenda nisi enim, accusantium voluptates ad.a',
+        ];
+
+        return view('user.posts.edit', compact('post'));
     }
 
-    public function update()
+    public function update(Request $request , $post)
     {
-        return 'update';
+        // $title = $request->input('title');
+        // $content = $request->input('content');
+        // dd($title , $content);
+        // return 'update';
+
+        session(['alert' => __('Saved :)')]);
+
+        return redirect()->route('user.posts.show' , $post);
+        
     }   
 
-    public function delete()
+    public function delete($post)
     {
-        return 'delete';
+        // return 'delete';
+        return redirect()->route('user.posts');
+
     }
 
     public function like()
